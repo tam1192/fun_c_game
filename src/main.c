@@ -1,14 +1,31 @@
 #include <stdio.h>
 
-int graphic(int x,int y);
+#define pixel_x 32
+#define pixel_y 18
+
+int canvas[pixel_y][pixel_x];
+void canvas_init();
+void screen_canvas();
+
 int main(){
-	int a;
-	a=graphic(32,18);
-	printf("%d",a);
+	canvas_init();
+	screen_canvas();
 }
-int graphic(int x,int y){
-//x*y　画面サイズ
-//p 画素数
-	int p=x*y;
-	return p;
+void canvas_init(){
+	int x,y;
+	for(y=0;y<pixel_y;y++){
+		for(x=0;x<pixel_x;x++){
+			canvas[y][x]=0;
+		}
+	}
+}
+void screen_canvas(){
+	int x,y;
+	printf("\n");
+	for(y=0;y<pixel_y;y++){
+		for(x=0;x<pixel_x;x++){
+			printf("%d",canvas[y][x]);
+		}
+		printf("\n");
+	}
 }
